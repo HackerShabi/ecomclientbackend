@@ -40,8 +40,7 @@ const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:3001',
   'http://localhost:3002',
-  'https://ecomclient.vercel.app',
-  'https://ecomclient-f1a1klwmz-hackershabis-projects.vercel.app',
+  'https://ecomclient-bay.vercel.app',
   'https://ecomclientbackend.onrender.com'
 ];
 
@@ -52,9 +51,11 @@ const corsOptions = {
     if (!origin) return callback(null, true);
     
     if (allowedOrigins.indexOf(origin) === -1) {
+      console.log('Blocked by CORS:', origin);
       const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
       return callback(new Error(msg), false);
     }
+    console.log('Allowed by CORS:', origin);
     return callback(null, true);
   },
   credentials: true,
